@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organ Donor and Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">LifeLink+</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#donate">Become a Donor</a>
+            <a href="#finder">Finder</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Give the Gift of Life</h1>
+            <p>
+                Organ donation can give hope and a second chance at life.
+                Learn about donation and spread awareness.
+            </p>
+            <a href="#donate" class="btn">Become a Donor</a>
+            <a href="#about" class="btn secondary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <h2>About Organ Donation</h2>
+        <p>
+            Organ donation is the process of donating organs or tissues
+            for transplantation when medically appropriate.
+            Awareness helps people make informed decisions.
+        </p>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Save Lives</h3>
+                <p>Organ donation can help people who need a transplant.</p>
+            </div>
+
+            <div class="card">
+                <h3>Spread Awareness</h3>
+                <p>Share reliable information about organ donation.</p>
+            </div>
+
+            <div class="card">
+                <h3>Make a Difference</h3>
+                <p>Discuss donation wishes with family and qualified professionals.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donor Form -->
+    <section class="section form-section" id="donate">
+        <h2>Donor Interest Form</h2>
+        <p>This is a student project demonstration, not an official registration.</p>
+
+        <form id="donorForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="age">Age</label>
+            <input type="number" id="age" min="1" max="120"
+                   placeholder="Enter your age" required>
+
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="Enter your city" required>
+
+            <label for="organ">Area of Interest</label>
+            <select id="organ" required>
+                <option value="">Select an option</option>
+                <option>Organ donation awareness</option>
+                <option>Tissue donation awareness</option>
+                <option>Learn about donation</option>
+            </select>
+
+            <button type="submit" class="btn">Submit Demo Form</button>
+            <p id="message" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <!-- Finder Section -->
+    <section class="section" id="finder">
+        <h2>Organ Donor Finder</h2>
+        <p>
+            Explore the sample directory interface below.
+            These are fictional examples, not real donors or available organs.
+        </p>
+
+        <input type="search" id="search"
+               placeholder="Search sample entries..." aria-label="Search sample entries">
+
+        <div class="cards" id="directory">
+            <div class="card sample">
+                <h3>Sample Centre A</h3>
+                <p>City: Chennai</p>
+                <p>Type: Awareness Information</p>
+            </div>
+
+            <div class="card sample">
+                <h3>Sample Centre B</h3>
+                <p>City: Coimbatore</p>
+                <p>Type: General Guidance</p>
+            </div>
+
+            <div class="card sample">
+                <h3>Sample Resource C</h3>
+                <p>City: Online</p>
+                <p>Type: Educational Resource</p>
+            </div>
+        </div>
+        <p id="searchMessage" aria-live="polite"></p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <h2>Contact & Information</h2>
+        <p>
+            For accurate information about organ donation in India,
+            consult official health authorities or recognised transplant organisations.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>LifeLink+ | Organ Donor and Finder Website</p>
+        <p>Student Mini Project — Fundamentals of Full Stack</p>
+        <small>
+            Educational demo only. No real donor information is collected,
+            stored, verified, or matched.
+        </small>
+    </footer>
+
+    <script>
+        // Demo form: do not send or store personal information.
+        document.getElementById("donorForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.getElementById("message").textContent =
+                "Demo only: your information was not sent or saved.";
+            this.reset();
+        });
+
+        // Search fictional sample cards.
+        const searchInput = document.getElementById("search");
+        const sampleCards = document.querySelectorAll(".sample");
+
+        searchInput.addEventListener("input", function() {
+            const query = this.value.toLowerCase();
+
+            sampleCards.forEach(function(card) {
+                card.hidden = !card.textContent.toLowerCase().includes(query);
+            });
+
+            const count = [...sampleCards].filter(card => !card.hidden).length;
+            document.getElementById("searchMessage").textContent =
+                count + " sample entr" + (count === 1 ? "y" : "ies") + " shown.";
+        });
+    </script>
+
+</body>
+</html>
